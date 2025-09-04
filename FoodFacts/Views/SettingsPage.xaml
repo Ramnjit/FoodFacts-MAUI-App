@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:FoodFacts.ViewModels"
+             x:DataType="viewmodels:SettingsViewModel"
+             x:Class="FoodFacts.Views.SettingsPage"
+             Title="Settings">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <Label Text="User Profile" 
+               FontSize="Large" 
+               FontAttributes="Bold"/>
+
+        <Entry Text="{Binding Username}" 
+               Placeholder="Enter your name" />
+
+        <Label Text="App Theme" 
+               FontSize="Large" 
+               FontAttributes="Bold" 
+               Margin="0,20,0,0"/>
+
+        <Picker Title="Select a theme" 
+                ItemsSource="{Binding ThemeOptions}" 
+                SelectedItem="{Binding Theme}"/>
+
+        <Button Text="Save Settings"
+                Command="{Binding SaveSettingsCommand}"
+                HorizontalOptions="Center"
+                Margin="0,20,0,0"/>
+
+    </VerticalStackLayout>
+
+</ContentPage>

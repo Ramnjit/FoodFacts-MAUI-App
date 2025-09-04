@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:FoodFacts.Models"
+             xmlns:viewmodels="clr-namespace:FoodFacts.ViewModels"
+             x:DataType="viewmodels:SearchViewModel"
+             x:Class="FoodFacts.Views.SearchPage"
+             Title="Product Search">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding SortButtonText}" Command="{Binding ChangeSortOrderCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="Auto, *">
+
+        <SearchBar Grid.Row="0"
+                   Placeholder="Search for a food product..."
+                   Text="{Binding SearchText}"
+                   SearchCommand="{Binding SearchProductsCommand}" />
+
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Products}"
+                        SelectionMode="None">
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Product">
+                    <Border StrokeShape="RoundRectangle 10" Padding="0">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:SearchViewModel}}, Path=GoToDetailsCommand}"
+                              CommandParameter="{Binding .}" />
+                        </Border.GestureRecognizers>
+                        <Grid RowDefinitions="120, Auto" RowSpacing="5">
+
+                            <Image Grid.Row="0"
+                                   Source="{Binding ImageUrl}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="120"/>
+
+                            <Label Grid.Row="1"
+                                   Text="{Binding ProductName}"
+                                   FontAttributes="Bold"
+                                   Padding="10"
+                                   MaxLines="2"
+                                   LineBreakMode="TailTruncation"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <ActivityIndicator Grid.RowSpan="2"
+                           IsRunning="{Binding IsSearching}"
+                           IsVisible="{Binding IsSearching}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+    </Grid>
+</ContentPage>

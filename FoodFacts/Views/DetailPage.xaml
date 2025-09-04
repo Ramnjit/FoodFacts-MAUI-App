@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:FoodFacts.ViewModels"
+             x:DataType="viewmodels:DetailViewModel"
+             x:Class="FoodFacts.Views.DetailPage"
+             Title="{Binding Product.ProductName}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+            <Image Source="{Binding Product.ImageUrl}"
+                   HeightRequest="250"
+                   Aspect="AspectFit" />
+
+            <Label Text="{Binding Product.Brands}"
+                   FontSize="Subtitle"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Nutritional Facts (per 100g)" FontAttributes="Bold" Margin="0,15,0,5"/>
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto, Auto" ColumnSpacing="10">
+                <Label Text="{Binding Product.Calories, StringFormat='Calories: {0}'}" Grid.Row="0" Grid.Column="0" />
+                <Label Text="{Binding Product.Fat, StringFormat='Fat: {0}g'}" Grid.Row="0" Grid.Column="1" />
+                <Label Text="{Binding Product.Sugars, StringFormat='Sugars: {0}g'}" Grid.Row="1" Grid.Column="0" />
+                <Label Text="{Binding Product.Proteins, StringFormat='Proteins: {0}g'}" Grid.Row="1" Grid.Column="1" />
+            </Grid>
+
+            <Label Text="Ingredients" FontAttributes="Bold" Margin="0,15,0,5"/>
+            <Label Text="{Binding Product.Ingredients}" />
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20" Margin="0,20,0,0">
+
+                <ImageButton Command="{Binding ToggleFavoriteCommand}"
+                 HeightRequest="44"
+                 WidthRequest="44">
+                    <ImageButton.Triggers>
+                        <DataTrigger TargetType="ImageButton"
+                         Binding="{Binding IsFavorite}"
+                         Value="False">
+                            <Setter Property="Source" Value="star_empty.png" />
+                        </DataTrigger>
+                        <DataTrigger TargetType="ImageButton"
+                         Binding="{Binding IsFavorite}"
+                         Value="True">
+                            <Setter Property="Source" Value="star_filled.png" />
+                        </DataTrigger>
+                    </ImageButton.Triggers>
+                </ImageButton>
+
+                <ImageButton Command="{Binding ScheduleNotificationCommand}"
+                 Source="bell.png"
+                 HeightRequest="44"
+                 WidthRequest="44" />
+
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
