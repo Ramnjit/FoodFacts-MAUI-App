@@ -2,7 +2,7 @@
 
 ![foodfacts_maui_app_gif](https://github.com/user-attachments/assets/b083d1f5-ce2d-4ffc-a683-5b725f05b300)
 
-## Project Description
+## 📝 Project Description
 
 FoodFacts is a cross-platform mobile application for Android built with .NET MAUI. 
 Using the Open Food Facts API, it allows users to search for food products, view nutrition details 
@@ -11,7 +11,7 @@ and ingredient information. It also saves their favorite products to a local on-
 It features a clean MVVM architecture, dependency injection, and demonstrates advanced capabilities
 such as calling native Android APIs for actionable notifications and persisting data for offline use with SQLite.
 
-## Technical Features & Skills Showcased
+## 🌟 Technical Features & Skills Showcased
 
 This project was built to demonstrate a comprehensive set of modern, professional mobile development practices.
 
@@ -24,7 +24,7 @@ This project was built to demonstrate a comprehensive set of modern, professiona
 * **Dynamic & Responsive UI:** The UI is built with XAML and features a responsive two-column grid (`GridItemsLayout`), data-driven UI changes (`DataTriggers`), and user feedback controls (`ActivityIndicator`).
 * **Advanced Data Manipulation:** Implements on-the-fly sorting of data collections using C# and LINQ.
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 * .NET MAUI (.NET 8)
 * C# & XAML
@@ -33,7 +33,7 @@ This project was built to demonstrate a comprehensive set of modern, professiona
 * Native Android APIs
 * Open Food Facts REST API
 
-## Setup & Installation
+## 💻 Setup & Installation
 
 1.  Clone the repository: `git clone`
 2.  Open the `FoodFacts.sln` file in Visual Studio 2022 (v17.8 or newer).
