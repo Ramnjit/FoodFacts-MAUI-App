@@ -1,6 +1,6 @@
 # FoodFacts: A .NET MAUI App
 
-[A short, animated GIF of the app searching for a product, navigating to the detail page, and favoriting an item would be very effective here.]
+![foodfacts_maui_app_gif](https://github.com/user-attachments/assets/b083d1f5-ce2d-4ffc-a683-5b725f05b300)
 
 ## Project Description
 
